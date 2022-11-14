@@ -1,0 +1,11 @@
+package group5.tester.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import group5.tester.model.Supplier;
+
+@Repository
+public interface SupplierRepository extends JpaRepository<Supplier ,Long>{
+	
+}
