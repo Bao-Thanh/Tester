@@ -1,0 +1,118 @@
+<section class="page-header">
+    <div class="overly"></div> 	
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="content text-center">
+            <h1 class="mb-3">Cart</h1>
+            Information
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent justify-content-center">
+              <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Cart</li>
+            </ol>
+          </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  
+    <section class="cart shopping page-wrapper">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+              <div class="product-list">
+                <form class="cart-form">
+                    <table class="table shop_table shop_table_responsive cart" cellspacing="0">
+                        <thead>
+                          <tr>
+                              <th class="product-thumbnail"> </th>
+                              <th class="product-name">Product</th>
+                              <th class="product-price">Price</th>
+                              <th class="product-quantity">Quantity</th>
+                              <th class="product-subtotal">Total</th>
+                              <th class="product-remove"> </th>
+                          </tr>
+                        </thead>
+  
+                        <tbody>
+                          <tr class="cart_item" *ngFor="let product of products">
+                              <td class="product-thumbnail" data-title="Thumbnail">
+                                  <a routerLink="/product-single"><img src="{{product.image}}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt=""></a>
+                              </td>
+  
+                              <td class="product-name" data-title="Product">
+                                  <a href="#">{{product.name}}</a>
+                              </td>
+  
+                              <td class="product-price" data-title="Price">
+                                  <span class="amount"><span class="currencySymbol"><pre wp-pre-tag-3=""></pre>
+                                    </span>{{product.price}}</span>
+                              </td>
+                              <td class="product-quantity" data-title="Quantity">
+                                  <div class="quantity">
+                                      <!-- <label class="sr-only" >{{product.amount}}</label> -->
+                                      <input min="1" type="number" value="{{amount}}" name="" class="form-control w-25"
+                                      [(ngModel)]="amount" [ngModelOptions]="{standalone: true}"
+                                      (change)="changeSubtotal(product)"/>
+                                  </div>
+                              </td>
+                              <td class="product-subtotal" data-title="Total">
+                                  <span class="amount">
+                                    <span class="currencySymbol">
+                                      <pre wp-pre-tag-3=""></pre>
+                                    </span>{{product.price}}</span>
+                              </td>
+                               <td class="product-remove" data-title="Remove">
+                                  <button (click)="removeFromCart(product)" class="remove" aria-label="Remove this item" data-product_id="30" data-product_sku="">×</button>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td colspan="6" class="">
+                                  <div class="text-center">
+                                    <h5>Total</h5>
+                                    <h5>{{subTotal}}</h5>
+                                  </div>
+                                </td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+          </div>
+        </div>
+                  <div class="billing-details mt-5">
+                    <h4 class="mb-4">Billing Details</h4>
+                    <form class="checkout-form">
+                        <div class="row">
+                          <div class="col-lg-12">
+                              <div class="form-group mb-4">
+                                <label for="last_name">Phone number</label>
+                                <input 
+                                name="phone" 
+                                [(ngModel)]="info.phone"
+                                #info.phone="ngModel"
+                                type="text" class="form-control" id="last_name" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-lg-12">
+                              <div class="form-group mb-4">
+                                <label for="company_name">Address</label>
+                                <input 
+                                name="address" 
+                                [(ngModel)]="info.address"
+                                #info.address="ngModel"
+                                type="text" class="form-control" id="company_name" placeholder="">
+                              </div>
+                          </div>
+                        </div>
+                        <button class="btnn btn-small btn-main btn-block" (click)="onOrder()" > Order</button>
+                        <small class="text-danger text-center">{{errorMessage}}</small>
+                    </form>
+                    
+                  </div>
+          </div>
+    </section>

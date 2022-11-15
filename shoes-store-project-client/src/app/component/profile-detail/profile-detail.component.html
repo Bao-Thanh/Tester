@@ -1,0 +1,114 @@
+<section class="page-header">
+    <div class="overly"></div> 	
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="content text-center">
+            <h1 class="mb-3">Profile</h1>
+            <p>Information</p>
+  
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent justify-content-center">
+              <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Profile</li>
+            </ol>
+          </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <section class="user-dashboard page-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-7 col-sm-12 col-lg-12">
+           <div class="tab-pane fade show active" id="settings" role="tabpanel" >
+              <div class="acccount-settings">
+                <h1 class="mb-4 text-center">Profile</h1>
+                <form>
+                  <div class="form-group mb-4">
+                    <label >Full name </label>
+                    <input name="name" 
+                      [(ngModel)]="customer.name"
+                      #customer.name="ngModel"
+                    type="text" class="form-control" value="{{customer.name}}">
+                  </div>
+                  <div class="form-row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label >Age</label>
+                        <input 
+                        name="age" 
+                    [(ngModel)]="customer.age"
+                    #customer.age="ngModel"
+                        type="text" class="form-control" value="{{customer.age}}">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label >Gender</label>
+                        <input 
+                        name="gender" 
+                        [(ngModel)]="customer.gender"
+                        #customer.gender="ngModel"
+                        type="text" class="form-control" value="{{customer.gender}}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group mb-4">
+                    <label >Email address </label>
+                    <input 
+                    name="email" 
+                  [(ngModel)]="customer.email"
+                  #customer.email="ngModel"
+                    type="text" class="form-control" value="{{customer.email}}">
+                  </div>
+                  <div class="form-group mb-4">
+                    <label >Phone number </label>
+                    <input 
+                    name="phone" 
+                  [(ngModel)]="customer.phone"
+                  #customer.phone="ngModel"
+                    type="text" class="form-control" value="{{customer.phone}}">
+                  </div>
+                  <div class="form-group mb-4">
+                    <label >Address </label>
+                    <input 
+                    name="address" 
+                  [(ngModel)]="customer.address"
+                  #customer.address="ngModel"
+                    type="text" class="form-control" value="{{customer.address}}">
+                  </div>
+                  <button href="#" class="btn btn-main mt-3 btn-block btn-dark" (click)="onSubmit()">Save Changes</button>
+                  <small class="text-danger text-center">{{errorMessage}}</small>
+                </form>
+  
+                <!-- <form action="#" class="mt-5">
+                  <h4>Password change</h4>
+  
+                  <div class="form-group">
+                    <label >Current password </label>
+                    <input type="text" class="form-control" placeholder="">
+                    
+                  </div>
+                  <div class="form-group">
+                    <label >New password</label>
+                    <input type="text" class="form-control" placeholder="">
+                  </div>
+                  <div class="form-group">
+                    <label >Confirm password</label>
+                    <input type="text" class="form-control" placeholder="">
+                  </div>
+  
+                  <a href="#" class="btn btn-main mt-3 btn-block btn-dark">Save Changes</a>
+                </form> -->
+              </div>
+            </div>
+  
+         
+        </div>
+      </div>
+    </div>
+  </section>
