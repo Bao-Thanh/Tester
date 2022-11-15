@@ -88,6 +88,8 @@ public class AuthController {
         account.setRole("user");
         accountRepository.save(account);
         Customer cus = new Customer();
+        cus.setType(0);
+        cus.setStatus("Active");
         cus.setAccount(account);
         customerRepository.save(cus);
         return ResponseEntity.ok(new MessageResponse("Account registered successfully!"));
