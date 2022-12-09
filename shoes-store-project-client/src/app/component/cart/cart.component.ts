@@ -66,7 +66,13 @@ export class CartComponent implements OnInit {
       orderDetail.push(odd);
     }
     const {address, phone}=this.info;
-    if (address!=""&&phone!="") {
+    if (address===null){
+      this.errorMessage='Address is required';
+    }
+    else if (phone===null){
+      this.errorMessage='Phone is required';
+    }
+    else if (address!==null&&phone!==null) {
       this.orderSerVice.createOrder(address, phone, this.customer, orderDetail).subscribe({
         next: data => {
           console.log(data);
@@ -77,6 +83,6 @@ export class CartComponent implements OnInit {
         error: err => {
         }
       });
-    } else this.errorMessage='Please fill info';
+    }
   }
 }

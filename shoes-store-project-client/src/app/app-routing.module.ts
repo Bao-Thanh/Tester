@@ -10,6 +10,7 @@ import { OrdersComponent } from './component/orders/orders.component';
 import { OrderDetailComponent } from './component/order-detail/order-detail.component';
 import { ProfileDetailComponent } from './component/profile-detail/profile-detail.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { WrongRouteComponent } from './component/wrong-route/wrong-route.component';
 
 const routes: Routes = [
   { path:"login", component:LoginComponent },
@@ -22,6 +23,8 @@ const routes: Routes = [
   { path:"order/:id", component:OrderDetailComponent },
   { path:"profile-details", component:ProfileDetailComponent },
   { path:"dashboard", component:DashboardComponent },
+    //Wrong route
+  { path: '**', component: WrongRouteComponent},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

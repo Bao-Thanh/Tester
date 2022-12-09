@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core'
+import { Validators } from '@angular/forms';
 import { Router } from '@angular/router'
+import { AccountService } from 'src/app/service/account/account.service';
 import { AuthService } from 'src/app/service/auth/auth.service'
 import { CustomerService } from 'src/app/service/customer/customer.service'
 
@@ -9,6 +11,9 @@ import { CustomerService } from 'src/app/service/customer/customer.service'
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
+  
+ accountList : any = {}
+
   form: any = {
     username: null,
     password: null,
@@ -26,7 +31,7 @@ export class SignupComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
-  constructor(private _service: AuthService, private __service: CustomerService, private _route: Router) {}
+  constructor(private authService: AuthService, private accountService: AccountService, private _route: Router) {}
 
   ngOnInit(): void {
   }
@@ -38,7 +43,7 @@ export class SignupComponent implements OnInit {
     console.log("cus",customer)
     if(username!=null&&password!=null&&cfpassword!=null&&customer.name!=null&&customer.age!=null&&customer.gender!=null&&customer.address!=null&&customer.phone!=null&&customer.email!=null){
       if (password===cfpassword) {
-        this._service.register(username, password, status, role, customer).subscribe({
+        this.authService.register(username, password, status, role, customer).subscribe({
           next: data => {
             console.log(data);
             this.isSuccessful = true;
@@ -50,7 +55,11 @@ export class SignupComponent implements OnInit {
             this.isSignUpFailed = true;
           }
         });
-      } else this.errorMessage='ConfirmPassword is not true';
-    }else this.errorMessage="Please fill info";
+      } else{
+        window.alert('Confirm password is not true')
+      } 
+    }else {
+      window.alert("Please fill all infos to signup")
+    }
   }
 }

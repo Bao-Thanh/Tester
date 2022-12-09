@@ -48,7 +48,7 @@
                   <a routerLink="/product/{{product.id}}"><img class="img-thumbnail w-100 mb-3 img-first" src="{{product.image}}" alt="product-img" /></a>
                 </div>
 
-                <span class="onsale">Sale</span>
+                <!-- <span class="onsale">Sale</span> -->
                 <div class="product-hover-overlay">
                   <button (click)="addToCart(product)"><i class="tf-ion-android-cart"></i></button>
                   <a href="#"><i class="tf-ion-ios-heart"></i></a>
@@ -57,7 +57,7 @@
                 <div class="product-info">
                   <h2 class="product-title h5 mb-0"><a routerLink="/product/{{product.id}}">{{product.name}}</a></h2>
                   <span class="price">
-                    {{product.price}}
+                    ${{product.price}}
                   </span>
                 </div>
               </div>

@@ -12,6 +12,10 @@ export class ProductsingleComponent implements OnInit {
   pros: any[] = [];
   constructor(private productService: ProductService,private route: ActivatedRoute) { }
 
+  form: any = {
+    quantity: null
+  };
+
   ngOnInit(): void {
       const id = Number(this.route.snapshot.paramMap.get('id'));
       this.productService.getProductByID(id).subscribe({
@@ -26,8 +30,10 @@ export class ProductsingleComponent implements OnInit {
     }
 
     addToCart(product: any) {
+      const { quantity } = this.form;
+      this.product.quantity = quantity;
       if (!this.productService.productInCart(product)) {
-        //product.quantity = 1;
+        // this.product.quantity = 3;
         this.productService.addToCart(product);
         this.pros = [...this.productService.getProduct()];
         //this.subTotal = product.price;

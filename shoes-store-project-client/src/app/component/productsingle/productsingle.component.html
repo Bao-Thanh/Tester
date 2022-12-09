@@ -1,37 +1,42 @@
 <section class="page-header">
-    <div class="overly"></div> 	
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-6">
-          <div class="content text-center">
-            <h1 class="mb-3">Product Single</h1>
-            <p>Information</p>
-  
+  <div class="overly"></div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="content text-center">
+          <h1 class="mb-3">Product Single</h1>
+          <p>Information</p>
+
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent justify-content-center">
               <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Product Single {{product?.name}}</li>
+              <li class="breadcrumb-item active" aria-current="page">
+                {{ product?.name }}
+              </li>
             </ol>
           </nav>
-          </div>
         </div>
       </div>
     </div>
-  </section>
-  
-  <section class="single-product">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-5">
-          <div class="single-product-slider">
-            <div class="carousel slide" data-ride="carousel" id="single-product-slider">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="{{product?.image}}" alt="" class="img-fluid">
-                </div>
-                
+  </div>
+</section>
+
+<section class="single-product">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="single-product-slider">
+          <div
+            class="carousel slide"
+            data-ride="carousel"
+            id="single-product-slider"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{{ product?.image }}" alt="" class="img-fluid" />
               </div>
-<!--   
+            </div>
+            <!--   
               <ol class="carousel-indicators">
                   <li data-target="#single-product-slider" data-slide-to="0" class="active">
                       <img src="{{product?.imageUrls}}" alt="" class="img-fluid">
@@ -43,27 +48,45 @@
                       <img src="{{product?.imageUrls}}" alt="" class="img-fluid">
                   </li>
               </ol> -->
-            </div>
           </div>
         </div>
-        
-        <div class="col-md-7">
-          <div class="single-product-details mt-5 mt-lg-0">
-            <h2>{{product?.name}}</h2>
-            <hr>
-            <h3 class="product-price">{{product?.price}} <del>$119.90</del></h3>
-            <p class="product-description my-4 ">
-              Description Information:{{product.description}}  
-            </p>
-  
-            <form class="cart" action="#" method="post">
-              <div class="quantity d-flex align-items-center">
-                <input type="number" id="#" class="input-text qty text form-control w-25 mr-3" step="1" min="1" max="9" name="quantity" value="1" title="Qty" size="4" >
-                <button class="btnn btn-main btn-small" (click)="addToCart(product)">Add to cart</button>
-              </div>
-            </form>
+      </div>
 
-            <!-- <div class="products-meta mt-4">
+      <div class="col-md-7">
+        <div class="single-product-details mt-5 mt-lg-0">
+          <h2>{{ product?.name }}</h2>
+          <hr />
+          <h3 class="product-price">${{ product?.price }}</h3>
+          <p class="product-description my-4">
+           {{ product.description }}
+          </p>
+
+          <form
+            class="cart"
+            name="form"
+            (ngSubmit)="f.form.valid && addToCart(product)"
+            #f="ngForm"
+          >
+            <div class="quantity d-flex align-items-center">
+              <input
+                type="number"
+                id="quantity"
+                [(ngModel)]="product.quantity"
+                #product.quantity="ngModel"
+                class="input-text qty text form-control w-25 mr-3"
+                step="1"
+                min="1"
+                max="9"
+                name="quantity"
+                value="1"
+                title="Qty"
+                size="4"
+              />
+              <button class="btnn btn-main btn-small">Add to cart</button>
+            </div>
+          </form>
+
+          <!-- <div class="products-meta mt-4">
               <div class="product-category d-flex align-items-center">
                 <span class="font-weight-bold text-capitalize product-meta-title">Categories : </span>
                 aaaaa
@@ -86,12 +109,11 @@
                 </ul>
               </div> 
             </div> -->
-          </div>
         </div>
       </div>
-  
-      
-      <!-- <div class="row">
+    </div>
+
+    <!-- <div class="row">
         <div class="col-lg-12">
           <nav class="product-info-tabs wc-tabs mt-5 mb-5">
             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
@@ -148,5 +170,5 @@
           </div>
         </div>
       </div> -->
-    </div>
-  </section>
+  </div>
+</section>

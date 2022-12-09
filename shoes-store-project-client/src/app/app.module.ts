@@ -19,6 +19,7 @@ import { SignupComponent } from './component/signup/signup.component';
 import { ProfileDetailComponent } from './component/profile-detail/profile-detail.component';
 import { OrderDetailComponent } from './component/order-detail/order-detail.component';
 import { httpInterceptorProviders } from './helpers/http.interceptor';
+import { WrongRouteComponent } from './component/wrong-route/wrong-route.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import { httpInterceptorProviders } from './helpers/http.interceptor';
     SignupComponent,
     ProfileDetailComponent,
     OrderDetailComponent,
+    WrongRouteComponent,
   ],
   imports: [
     BrowserModule,
