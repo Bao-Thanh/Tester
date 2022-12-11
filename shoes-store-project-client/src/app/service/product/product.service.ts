@@ -2,34 +2,43 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-const httpOptions : any    = {
+const httpOptions: any = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-  })
+    'Content-Type': 'application/json',
+  }),
 };
 const API_URL = 'http://localhost:8094/api/product/';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
   pros: any[] = [];
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAllProduct(): Observable<any> {
-    return this.http.get(API_URL + 'viewall');
+    return this.http.get(API_URL + 'auth/viewall');
   }
 
   getProductByID(id: number): Observable<any> {
-    return this.http.get(API_URL + `${id}`);
+    return this.http.get(API_URL + 'auth/' + `${id}`);
   }
 
   deleteProductByID(id: number): Observable<any> {
-    return this.http.delete(API_URL + `${id}`);
+    return this.http.delete(API_URL + 'auth/' + `${id}`);
   }
 
-  createByCategory(name: string, price: number, image: string, amount: string, status: string, description: string, saleOff: string, id: number): Observable<any> {
+  createByCategory(
+    name: string,
+    price: number,
+    image: string,
+    amount: string,
+    status: string,
+    description: string,
+    saleOff: string,
+    id: number
+  ): Observable<any> {
     return this.http.post(
-      API_URL + 'createByCategory/' +`${id}`,
+      API_URL + 'createByCategory/' + `${id}`,
       {
         name,
         price,
@@ -37,15 +46,24 @@ export class ProductService {
         amount,
         status,
         description,
-        saleOff
+        saleOff,
       },
       httpOptions
     );
   }
 
-  updateProduct(name: string, price: number, image: string, amount: string, status: string, description: string, saleOff: string, id: number): Observable<any> {
+  updateProduct(
+    name: string,
+    price: number,
+    image: string,
+    amount: string,
+    status: string,
+    description: string,
+    saleOff: string,
+    id: number
+  ): Observable<any> {
     return this.http.put(
-      API_URL +`${id}`,
+      API_URL + `${id}`,
       {
         name,
         price,
@@ -53,7 +71,7 @@ export class ProductService {
         amount,
         status,
         description,
-        saleOff
+        saleOff,
       },
       httpOptions
     );

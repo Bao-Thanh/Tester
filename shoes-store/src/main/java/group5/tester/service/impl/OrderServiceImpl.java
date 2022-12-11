@@ -58,11 +58,14 @@ public class OrderServiceImpl implements OrderService{
 		double total = 0;
 		for (OrderDetail d: listOrderDeatil) {
 			
-			total += d.getProductPrice() * d.getAmount();
+			total += d.getProductPrice();
+			System.out.println(d.getProductPrice());
+			System.out.println(d.getAmount());
 			d.setOrder(orderId);
 			orderDetailRepo.save(d);
 		}
-		order.setOrderDetailList(listOrderDeatil);
+		System.out.println(total);
+		order.setOrderDetailList(listOrderDeatil);	
 		order.setTotalPrice(total);
 		orderRepo.save(order);
 		return order;
