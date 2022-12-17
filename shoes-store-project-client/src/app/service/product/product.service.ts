@@ -24,7 +24,7 @@ export class ProductService {
   }
 
   deleteProductByID(id: number): Observable<any> {
-    return this.http.delete(API_URL + 'auth/' + `${id}`);
+    return this.http.delete(API_URL + `${id}`);
   }
 
   createByCategory(

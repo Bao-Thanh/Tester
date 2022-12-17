@@ -72,7 +72,7 @@ export class DashboardComponent implements OnInit {
 
   onSaveCreate(){
     const {name,price,image,amount,status,description,saleOff}=this.product;
-    if(name!=""&&price!=""&&image!=""&&amount!=""&&status!=""&&description!=""&&saleOff!=""){
+    if(name!=null&&price!=null&&image!=null&&amount!=null&&status!=null&&description!=null&&saleOff!=null){
       if(this.categoryId!=0){
           this.productService.createByCategory(name,price,image,amount,status,description,saleOff,this.categoryId).subscribe({
             next: data => {
@@ -92,7 +92,7 @@ export class DashboardComponent implements OnInit {
 
   onSaveEdit(id:number){
     const {name,price,image,amount,status,description,saleOff}=this.product;
-    if(name!=""&&price!=""&&image!=""&&amount!=""&&status!=""&&description!=""&&saleOff!=""){
+    if(name!=null&&price!=null&&image!=null&&amount!=null&&status!=null&&description!=null&&saleOff!=null){
     this.productService.updateProduct(name,price,image,amount,status,description,saleOff,id).subscribe({
       next: data => {
         console.log(data);
