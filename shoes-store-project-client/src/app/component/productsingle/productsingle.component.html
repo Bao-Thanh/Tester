@@ -44,7 +44,10 @@
         <div class="single-product-details mt-5 mt-lg-0">
           <h2>{{ product?.name }}</h2>
           <hr />
-          <h3 class="product-price">{{ product?.price }} <del>$119.90</del></h3>
+          <h3 class="product-price">
+            {{ product?.price }}
+            <del>$119.90</del>
+          </h3>
           <p class="product-description my-4">
             Description Information:{{ product.description }}
           </p>
@@ -65,11 +68,19 @@
                 size="4"
               />
               <button
+                *ngIf="isLoggedIn"
                 class="btnn btn-main btn-small"
                 (click)="addToCart(product)"
               >
                 Add to cart
               </button>
+              <button
+              *ngIf="!isLoggedIn"
+              class="btnn btn-main btn-small"
+              routerLink="/login"
+            >
+              Please login to add to cart
+            </button>
             </div>
           </form>
         </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from 'src/app/service/category/category.service';
+import { StorageService } from 'src/app/service/storage/storage.service';
 import { ProductService } from '../../service/product/product.service';
 import { CartService } from '../../service/storage/cart.service';
 //import {Product} from '../../mock-test/product'
@@ -17,13 +18,18 @@ export class ProductComponent implements OnInit {
   category: any = {};
   items: any = [];
   errorMessage = '';
+  isLoggedIn=false;
   constructor(
     private productService: ProductService,
     private categoryService: CategoryService,
+    private storageService : StorageService,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    if (this.storageService.isLoggedIn()) {
+      this.isLoggedIn = true;
+    }
     this.categoryService.getAllCategory().subscribe({
       next: (data) => {
         this.category = data;

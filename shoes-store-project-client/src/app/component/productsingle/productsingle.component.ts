@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { StorageService } from 'src/app/service/storage/storage.service';
 import { ProductService } from '../../service/product/product.service';
 @Component({
   selector: 'app-productsingle',
@@ -11,8 +12,10 @@ export class ProductsingleComponent implements OnInit {
   errorMessage = '';
   pros: any[] = [];
   quantity = 1;
+  isLoggedIn=false;
   constructor(
     private productService: ProductService,
+    private storageService : StorageService,
     private route: ActivatedRoute
   ) {}
 
@@ -21,6 +24,9 @@ export class ProductsingleComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    if (this.storageService.isLoggedIn()) {
+      this.isLoggedIn = true;
+    }
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.productService.getProductByID(id).subscribe({
       next: (data) => {
